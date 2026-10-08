@@ -1,6 +1,7 @@
-module.exports = function(eleventyConfig) 
+module.exports = (eleventyConfig) => 
 {
-    eleventyConfig.addPassthroughCopy({ "css": "css" })
+    eleventyConfig.addPassthroughCopy({ "static/css": "css" })
+    eleventyConfig.addPassthroughCopy({ "static/favicon.ico": "favicon.ico" })
 
     
     eleventyConfig.addFilter("readableDate", (dateObj) => 

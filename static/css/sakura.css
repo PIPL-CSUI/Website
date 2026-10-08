@@ -7,9 +7,9 @@
  */
 
 :root {
-    --color-blossom: #ffffff;
-    --color-fade: #c9c9c9;
-    --color-blossom-visited: #196674;
+    --color-blossom: #1b81fe;
+    --color-fade: #1b81fe;
+    --color-blossom-visited: #004293;
 
     --color-bg: #0a0a0a;
     --color-bg-alt: #222222;
