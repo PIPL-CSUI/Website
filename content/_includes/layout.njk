@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ lang | default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ title | default("PIPL") }} | PIPL CSUI</title>
+
+    <meta name="description" content="{{ description | default('Website of PIPL CSUI - Paguyuban Insinyur Perangkat Lunak CSUI') }}">
+    <meta name="author" content="PIPL CSUI">
+
+    {% if url %}
+    <link rel="canonical" href="{{ url }}">
+    {% endif %}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title | default('PIPL') }} | PIPL CSUI">
+    <meta property="og:description" content="{{ description | default('Website of PIPL CSUI - Paguyuban Insinyur Perangkat Lunak CSUI') }}">
+    <meta property="og:site_name" content="PIPL CSUI">
+
+    {% if url %}
+    <meta property="og:url" content="{{ url }}">
+    {% endif %}
+
+    {% if image %}
+    <meta property="og:image" content="{{ image }}">
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title | default('PIPL') }} | PIPL CSUI">
+    <meta name="twitter:description" content="{{ description | default('Website of PIPL CSUI - Paguyuban Insinyur Perangkat Lunak CSUI') }}">
+
+    {% if image %}
+    <meta name="twitter:image" content="{{ image }}">
+    {% endif %}
+
+    <meta name="theme-color" content="#f9f9f9">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/sakura.css">
+</head>
+
+<body>
+    {{ content | safe }}
+</body>
+</html>

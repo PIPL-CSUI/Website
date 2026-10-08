@@ -1,0 +1,12 @@
+{
+  "name": "pipl-website",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

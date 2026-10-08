@@ -1,0 +1,23 @@
+---
+layout: layout.njk
+permalink: "/~{{ author }}/index.html"
+pagination:
+    data: collections.authors
+    size: 1
+    alias: author
+eleventyComputed:
+    title: "Posts by {{ author }}"
+---
+
+<h3>Posts by {{ author }}</h3>
+
+<ul>
+    {% for post in collections.author_posts | reverse %}
+        {% if post.data.authorName == author and not post.data.hidden %}
+            <li>
+                <a href="{{ post.url }}">{{ post.data.title | default(post.fileSlug) }}</a> 
+                - <small>{{ post.date | readableDate }}</small>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
