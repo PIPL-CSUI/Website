@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "predev": "esbuild scripts/editor.js --bundle --outfile=static/js/toastui-editor.js",
     "dev": "eleventy --serve",
+    "prebuild": "esbuild scripts/editor.js --bundle --outfile=static/js/toastui-editor.js",
     "build": "eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "esbuild": "^0.28.2"
+  },
+  "dependencies": {
+    "@toast-ui/editor": "^3.2.2",
+    "jszip": "^3.10.2"
   }
 }

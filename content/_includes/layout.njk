@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/css/sakura.css">
 </head>
 
-<body>
+<body class="{{ bodyClass | default('') }}">
     {{ content | safe }}
 </body>
 </html>

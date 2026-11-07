@@ -1,0 +1,38 @@
+---
+layout: layout.njk
+bodyClass: editor
+---
+
+<link rel="stylesheet" href="/css/toastui-editor.css">
+<link rel="stylesheet" href="/css/toastui-editor-dark.css">
+<link rel="stylesheet" href="/css/write.css">
+
+<main>
+    <header>
+        <h1>Editor</h1>
+        
+        <div class="article-meta">
+            <label>Title
+                <input id="title" type="text" placeholder="Untitled article">
+            </label>
+            
+            <label>Date
+                <input id="date" type="date" required>
+            </label>
+            
+            <label>Tags (comma separated)
+                <input id="tags" type="text" placeholder="tutorial, web">
+            </label>
+        </div>
+    </header>
+
+    <div id="editor"></div>
+
+    <button id="export">Export article</button>
+    
+    <p id="draft-status" aria-live="polite"></p>
+</main>
+
+
+<script src="/js/toastui-editor.js"></script>
+<script src="/js/write.js"></script>
