@@ -14,7 +14,7 @@ module.exports = {
     permalink: (data) => 
     {
         const stem    = data.page.filePathStem
-        const newPath = stem.replace(/^\/authors\//, "")
+        const newPath = stem.replace(/^\/authors\//, "").replace(/\/index$/, "")
         
         return `/~${newPath}/index.html`
     }

@@ -1,3 +1,6 @@
+const fs = require("node:fs")
+const path = require("node:path")
+
 module.exports = (eleventyConfig) => 
 {
     eleventyConfig.addPassthroughCopy({ "static/css": "css" })
@@ -6,6 +9,18 @@ module.exports = (eleventyConfig) =>
     
     eleventyConfig.addPassthroughCopy({ "node_modules/@toast-ui/editor/dist/toastui-editor.css": "css/toastui-editor.css" })
     eleventyConfig.addPassthroughCopy({ "node_modules/@toast-ui/editor/dist/theme/toastui-editor-dark.css": "css/toastui-editor-dark.css" })
+
+    for (const author of fs.readdirSync("content/authors", { withFileTypes: true }).filter(entry => entry.isDirectory()))
+    {
+        const authorPath = path.join("content/authors", author.name)
+        
+        for (const slug of fs.readdirSync(authorPath, { withFileTypes: true }).filter(entry => entry.isDirectory()))
+        {
+            const attachments = path.join(authorPath, slug.name, "attachment")
+        
+            if (fs.existsSync(attachments)) eleventyConfig.addPassthroughCopy({ [attachments]: `~${author.name}/${slug.name}/attachment` })
+        }
+    }
 
     
     eleventyConfig.addFilter("readableDate", (dateObj) => 
