@@ -1,7 +1,5 @@
 const attachments    = []
 
-let attachmentNumber = 0
-
 const titleInput = document.querySelector("#title")
 const dateInput  = document.querySelector("#date")
 const tagsInput  = document.querySelector("#tags")
@@ -99,7 +97,6 @@ async function start()
             const url = await blobToDataUrl(item.blob)
          
             attachments.push({ ...item, url })
-            attachmentNumber++
         } 
         
         catch (error) 
@@ -135,7 +132,7 @@ async function start()
             addImageBlobHook(blob, callback) 
             {
                 const extension = blob.name?.match(/\.([a-z0-9]+)$/i)?.[1]?.toLowerCase() || blob.type.split("/")[1]?.replace("jpeg", "jpg").replace(/[^a-z0-9]/gi, "") || "bin"
-                const path      = `attachment/image${++attachmentNumber}.${extension}`
+                const path      = `attachment/${crypto.randomUUID().slice(0, 8)}.${extension}`
                 
                 blobToDataUrl(blob).then((url) => 
                 {
@@ -150,19 +147,7 @@ async function start()
     {
         let markdown = editor.getMarkdown()
     
-        const usedAttachments = []
-    
-        for (const { blob, path } of attachments) 
-        {
-            if (!markdown.includes(path)) continue
-        
-            const extension  = path.split(".").pop()
-            const outputPath = `attachment/image${usedAttachments.length + 1}.${extension}`
-        
-            markdown = markdown.replaceAll(path, outputPath)
-        
-            usedAttachments.push({ blob, path: outputPath })
-        }
+        const usedAttachments = attachments.filter(({ path }) => markdown.includes(path))
         
         return {
             title: titleInput.value,
