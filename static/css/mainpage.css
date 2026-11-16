@@ -1,0 +1,13 @@
+body.mainpage {
+    isolation: isolate;
+}
+
+body.mainpage::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: url("/checkboard.png") center / cover no-repeat;
+    opacity: 0.03;
+}
